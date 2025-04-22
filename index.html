@@ -42,6 +42,12 @@
       animation: slideDown 1s ease-out;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
     ul {
       display: flex;
       list-style: none;
@@ -181,27 +187,35 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
+      .menu-toggle {
+        display: block;
+        color: #f0c674;
       }
 
       ul {
+        display: none;
         flex-direction: column;
         width: 100%;
+        background-color: #000;
+        margin-top: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      ul.show {
+        display: flex;
       }
 
       ul li {
-        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 10px 0;
       }
 
-      .keunggulan {
+      nav {
         flex-direction: column;
-        align-items: center;
-      }
-
-      .keunggulan div {
-        width: 80%;
+        align-items: flex-start;
       }
     }
   </style>
@@ -210,7 +224,8 @@
 <body>
   <nav>
     <div class="logo">OMAH Laundry</div>
-    <ul>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul id="nav-list">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="alamat.html">Alamat</a></li>
       <li><a href="kontak.html">Kontak</a></li>
@@ -243,5 +258,14 @@
   </main>
 
   <footer><p>&copy; 2025 OMAH Laundry</p></footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
