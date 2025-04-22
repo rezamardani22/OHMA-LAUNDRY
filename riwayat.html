@@ -3,188 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riwayat Pemesanan - OMAH Laundry</title>
+  <title>Riwayat Pemesanan | OMAH Laundry</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #000;
-      color: #FFD700;
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header.navbar {
-      background-color: #000;
-      color: #FFD700;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      box-shadow: 0 2px 5px rgba(255, 215, 0, 0.3);
-    }
-
-    header .logo h1 {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-    }
-
-    nav ul li a {
-      color: #FFD700;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #fff;
-    }
-
-    main {
-      flex: 1;
-      padding: 100px 20px 20px;
-      max-width: 900px;
-      margin: auto;
-      width: 100%;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-
-    #riwayatList {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .riwayat-item {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #FFD700;
-      box-shadow: 0 4px 6px rgba(255, 215, 0, 0.2);
-      transition: transform 0.3s;
-    }
-
-    .riwayat-item:hover {
-      transform: scale(1.02);
-    }
-
-    .footer {
-      background-color: #000;
-      color: #FFD700;
-      text-align: center;
-      padding: 20px 10px;
-      font-size: 14px;
-      border-top: 1px solid #FFD700;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        background: #000;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 10px;
-        border: 1px solid #FFD700;
-        display: none;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        color: #FFD700;
-      }
-    }
-
-    .menu-toggle {
-      display: none;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+    body{background:#000;color:#FFD700;min-height:100vh;display:flex;flex-direction:column;}
+    header.navbar{background:#000;color:#FFD700;position:fixed;top:0;width:100%;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(255,215,0,0.3);z-index:100;}
+    .logo h1{font-size:24px;font-weight:bold;}
+    .menu-toggle{display:none;font-size:24px;cursor:pointer;}
+    nav ul{list-style:none;display:flex;gap:15px;}
+    nav ul li a{color:#FFD700;text-decoration:none;font-weight:bold;transition:color .3s;}
+    nav ul li a:hover{color:#fff;}
+    main{flex:1;padding:100px 20px 20px;max-width:900px;margin:auto;width:100%;}
+    h2{text-align:center;margin-bottom:20px;font-size:28px;}
+    #riwayatList{display:flex;flex-direction:column;gap:20px;}
+    .riwayat-item{background:#111;padding:20px;border:1px solid #FFD700;border-radius:10px;box-shadow:0 4px 6px rgba(255,215,0,0.2);transition:transform .3s;}
+    .riwayat-item:hover{transform:scale(1.02);}
+    footer.footer{background:#000;color:#FFD700;text-align:center;padding:20px 10px;border-top:1px solid #FFD700;margin-top:30px;}
+    @media(max-width:600px){.menu-toggle{display:block;}nav ul{display:none;flex-direction:column;background:#000;position:absolute;top:60px;right:20px;padding:10px;border:1px solid #FFD700;}nav ul.active{display:flex;}nav ul li{margin:10px 0;}}
   </style>
 </head>
-
 <body>
   <header class="navbar">
-    <div class="logo">
-      <h1>OMAH Laundry</h1>
-    </div>
+    <div class="logo"><h1>OMAH Laundry</h1></div>
     <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-    <nav>
-      <ul id="nav-list">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="alamat.html">Alamat</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-        <li><a href="statuspesanan.html">Status</a></li>
-        <li><a href="riwayat.html">Riwayat</a></li>
-      </ul>
-    </nav>
+    <nav><ul id="nav-list">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="alamat.html">Alamat</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="statuspesanan.html">Status</a></li>
+      <li><a href="riwayat.html">Riwayat</a></li>
+    </ul></nav>
   </header>
-
   <main>
     <h2>Riwayat Pemesanan</h2>
     <div id="riwayatList"></div>
   </main>
-
   <footer class="footer">
     <p>&copy; 2025 OMAH Laundry Jatuh Cahya. All rights reserved.</p>
   </footer>
-
   <script>
-    const riwayat = JSON.parse(localStorage.getItem('riwayat') || '[]');
-    const riwayatList = document.getElementById('riwayatList');
-
-    if (riwayat.length === 0) {
-      riwayatList.innerHTML = '<p>Anda belum memiliki riwayat pemesanan.</p>';
-    } else {
-      riwayat.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('riwayat-item');
-        div.innerHTML = `
-          <p><strong>Waktu Pemesanan:</strong> ${item.waktu}</p>
-          <p><strong>Jasa:</strong> ${item.jasa}</p>
-        `;
-        riwayatList.appendChild(div);
-      });
-    }
-
-    const menuToggle = document.getElementById('menu-toggle');
-    const navList = document.getElementById('nav-list');
-
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('active');
+    // Ambil data pembayaran terakhir
+    const waktu = localStorage.getItem('waktuPembayaran') || '-';
+    const jasa = localStorage.getItem('opsi') || '-';
+    const biaya = localStorage.getItem('biaya') || '0';
+    const list = document.getElementById('riwayatList');
+    // Tampilkan entry
+    list.innerHTML = `
+      <div class="riwayat-item">
+        <p><strong>Waktu Pembayaran:</strong> ${waktu}</p>
+        <p><strong>Jasa:</strong> ${jasa}</p>
+        <p><strong>Total Bayar:</strong> Rp ${Number(biaya).toLocaleString('id-ID')}</p>
+      </div>
+    `;
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', ()=>{
+      document.getElementById('nav-list').classList.toggle('active');
     });
   </script>
 </body>
