@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tagihan | OMAH Laundry</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #ffd700;
+      font-size: 16px;
+      line-height: 1.6;
+      padding-top: 90px;
+    }
+
+    nav {
+      background-color: #111;
+      color: #ffd700;
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(255, 215, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    ul li {
+      margin-left: 20px;
+    }
+
+    ul li a {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    ul li a:hover {
+      color: #fff;
+    }
+
+    main {
+      background-color: #111;
+      margin: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(255, 215, 0, 0.2);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 30px;
+      animation: fadeIn 1s ease forwards;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffd700;
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: slideDown 1s ease forwards;
+    }
+
+    .tagihan-info {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .tagihan-info p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .tagihan-info strong {
+      color: #fff;
+    }
+
+    .metode-pembayaran {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .metode-pembayaran label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      accent-color: #ffd700;
+    }
+
+    #bankOptions {
+      display: none;
+      margin-top: 10px;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    #bankOptions select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ffd700;
+      background-color: #000;
+      color: #ffd700;
+      font-size: 16px;
+    }
+
+    .btn-pesan {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    .btn-pesan:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #111;
+      color: #ffd700;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      border-top: 1px solid #ffd700;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideDown {
+      from {transform: translateY(-20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        display: none;
+        border: 1px solid #ffd700;
+        border-radius: 10px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">OMAH Laundry</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="menu">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="alamat.html">Alamat</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="statuspesanan.html">Status</a></li>
+      <li><a href="riwayat.html">Riwayat</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h2>Detail Tagihan</h2>
+    <div class="tagihan-info">
+      <p><strong>Nama:</strong> <span id="nama"></span></p>
+      <p><strong>Alamat:</strong> <span id="alamat"></span></p>
+      <p><strong>Opsi Jasa:</strong> <span id="opsi"></span></p>
+      <p><strong>Berat Cucian:</strong> <span id="berat"></span> kg</p>
+      <p><strong>Total Biaya:</strong> Rp <span id="biaya"></span></p>
+    </div>
+
+    <h3 style="margin-bottom: 15px;">Metode Pembayaran</h3>
+    <div class="metode-pembayaran">
+      <label><input type="radio" name="metode" value="QRIS"> QRIS</label>
+      <label><input type="radio" name="metode" value="OVO"> OVO</label>
+      <label><input type="radio" name="metode" value="DANA"> DANA</label>
+      <label><input type="radio" name="metode" value="BANK" onclick="toggleBank()"> Transfer Bank</label>
+    </div>
+
+    <div id="bankOptions">
+      <label>Pilih Bank:
+        <select id="bank-select">
+          <option value="BCA">BCA</option>
+          <option value="BNI">BNI</option>
+          <option value="Mandiri">Mandiri</option>
+        </select>
+      </label>
+    </div>
+
+    <button class="btn-pesan" onclick="konfirmasiPembayaran()">Konfirmasi Pembayaran</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OMAH Laundry Jatuh Cahya</p>
+  </footer>
+
+  <script>
+    document.getElementById("nama").textContent = localStorage.getItem("nama");
+    document.getElementById("alamat").textContent = localStorage.getItem("alamat");
+    document.getElementById("opsi").textContent = localStorage.getItem("opsi");
+    document.getElementById("berat").textContent = localStorage.getItem("berat");
+    document.getElementById("biaya").textContent = localStorage.getItem("biaya");
+
+    function toggleBank() {
+      document.getElementById("bankOptions").style.display = "block";
+    }
+
+    function konfirmasiPembayaran() {
+      const metode = document.querySelector('input[name="metode"]:checked');
+      if (!metode) {
+        alert("Pilih metode pembayaran!");
+        return;
+      }
+
+      let metodePembayaran = metode.value;
+      if (metode.value === "BANK") {
+        metodePembayaran += " - " + document.getElementById("bank-select").value;
+      }
+
+      localStorage.setItem("metodePembayaran", metodePembayaran);
+      localStorage.setItem("waktuPembayaran", new Date().toLocaleString());
+      window.location.href = "buktipembayaran.html";
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

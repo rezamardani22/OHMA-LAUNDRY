@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alamat Jasa | OMAH Laundry</title>
+  <style>
+    /* Global Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #000;
+      color: #f1c40f;
+      padding-top: 90px;
+      animation: fadeInBody 0.8s ease-out;
+    }
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Navbar */
+    header {
+      background: #111;
+      color: #f1c40f;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(241,196,15,0.2);
+      animation: slideDown 0.6s ease-out;
+      z-index: 1000;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #f1c40f;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 700px;
+      margin: 120px auto 40px;
+      background: #111;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(241,196,15,0.2);
+      animation: fadeInCard 0.8s ease-out;
+    }
+    @keyframes fadeInCard {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    h2 {
+      color: #f1c40f;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .alamat-info {
+      background: #000;
+      border: 1px solid #f1c40f;
+      border-radius: 8px;
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.5;
+      animation: fadeInInfo 0.8s ease-out;
+    }
+    @keyframes fadeInInfo {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .alamat-info p {
+      margin: 12px 0;
+    }
+    .alamat-info strong {
+      color: #ffd700;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #f1c40f;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 30px;
+      border-top: 1px solid #f1c40f;
+      animation: fadeInCard 1s ease-out;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        border: 1px solid #f1c40f;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      nav ul.show { display: flex; }
+      nav ul li { margin: 10px 0; padding: 0 20px; }
+      main { margin: 120px 15px 40px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">OMAH Laundry</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav><ul id="menu">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="alamat.html">Alamat</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="statuspesanan.html">Status</a></li>
+      <li><a href="riwayat.html">Riwayat</a></li>
+    </ul></nav>
+  </header>
+
+  <main>
+    <h2>Alamat Jasa</h2>
+    <div class="alamat-info">
+      <p><strong>Alamat:</strong> Jl. Raya Laundry No. 12, Kecamatan Maju, Kota Sejahtera, Indonesia</p>
+      <p><strong>Jam Operasional:</strong> Senin - Sabtu, 08.00 - 17.00</p>
+      <p><strong>Telepon:</strong> (021) 555-1234</p>
+      <p><strong>Email:</strong> omahlaundry@gmail.com</p>
+    </div>
+  </main>
+
+  <footer><p>&copy; 2025 OMAH Laundry</p></footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
