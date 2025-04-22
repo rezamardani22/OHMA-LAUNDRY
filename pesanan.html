@@ -1,226 +1,63 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pemesanan | OMAH Laundry</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #000; color: #f1c40f; padding-top: 90px; animation: fadeInBody 0.8s ease-out; }
+    @keyframes fadeInBody { from { opacity: 0; } to { opacity: 1; } }
 
-    body {
-      background-color: #000;
-      color: #ffd700;
-      font-size: 16px;
-      line-height: 1.6;
-      padding-top: 90px;
-      animation: fadeInBody 1s ease-in-out;
-    }
+    /* Header */
+    header { background: #111; color: #f1c40f; position: fixed; top: 0; left: 0; width: 100%; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 8px rgba(241,196,15,0.2); animation: slideDown 0.6s ease-out; z-index: 1000; }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .logo { font-size: 24px; font-weight: bold; }
+    .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li a { color: #f1c40f; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover { color: #ffd700; }
 
-    @keyframes fadeInBody {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    /* Main */
+    main { max-width: 600px; margin: 120px auto 40px; background: #111; padding: 30px 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(241,196,15,0.2); animation: fadeInMain 0.8s ease-out; }
+    @keyframes fadeInMain { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h2 { color: #f1c40f; text-align: center; margin-bottom: 20px; font-size: 28px; }
 
-    header {
-      background-color: #111;
-      color: #ffd700;
-      padding: 15px 20px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(255, 215, 0, 0.2);
-      animation: slideDown 0.7s ease-in-out;
-    }
+    .box { background: #000; border: 1px solid #f1c40f; border-radius: 8px; padding: 20px; animation: fadeInBox 0.8s ease-out; }
+    @keyframes fadeInBox { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    label { display: block; margin: 12px 0 6px; color: #f1c40f; font-size: 16px; }
+    input, select { width: 100%; padding: 12px; border: 1px solid #f1c40f; border-radius: 6px; background: #111; color: #f1c40f; font-size: 16px; transition: background 0.3s, border-color 0.3s; }
+    input:focus, select:focus { outline: none; background: #222; border-color: #ffd700; }
 
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    .btn-pesan { display: block; width: 100%; background: #f1c40f; color: #000; border: none; padding: 14px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer; margin-top: 20px; transition: background 0.3s, transform 0.2s; }
+    .btn-pesan:hover { background: #ffd700; transform: scale(1.05); }
 
-    .logo h1 {
-      font-size: 24px;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      transition: all 0.3s ease;
-    }
-
-    nav ul li {
-      margin-left: 20px;
-    }
-
-    nav ul li a {
-      color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #fff;
-    }
-
-    main {
-      padding: 30px 20px;
-      background-color: #111;
-      margin-top: 90px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(255, 215, 0, 0.2);
-      animation: fadeInMain 1s ease-in-out;
-    }
-
-    @keyframes fadeInMain {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #ffd700;
-    }
-
-    .box {
-      background-color: #222;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: left;
-      animation: fadeInBox 1s ease;
-    }
-
-    @keyframes fadeInBox {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .box p,
-    label {
-      font-size: 16px;
-      color: #ffd700;
-      margin-bottom: 8px;
-    }
-
-    select,
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ffd700;
-      background-color: #111;
-      color: #ffd700;
-      font-size: 16px;
-      transition: border-color 0.3s, background-color 0.3s;
-    }
-
-    select:focus,
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #fff;
-      background-color: #333;
-    }
-
-    .btn-pesan {
-      background-color: #ffd700;
-      color: #000;
-      border: none;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .btn-pesan:hover {
-      background-color: #e6c200;
-      transform: scale(1.05);
-    }
-
-    footer {
-      background-color: #111;
-      color: #ffd700;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      border-top: 1px solid #ffd700;
-      animation: fadeInFooter 1s ease;
-    }
-
-    @keyframes fadeInFooter {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Footer */
+    footer { background: #111; color: #f1c40f; text-align: center; padding: 20px 0; margin-top: 40px; border-top: 1px solid #f1c40f; animation: fadeInFooter 1s ease-out; }
+    @keyframes fadeInFooter { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        background-color: #111;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        display: none;
-        border: 1px solid #ffd700;
-        border-radius: 10px;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-      }
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
+    @media(max-width:768px) {
+      .menu-toggle { display: block; }
+      nav ul { display: none; flex-direction: column; background: #111; position: absolute; top: 60px; right: 20px; border: 1px solid #f1c40f; border-radius: 8px; }
+      nav ul.show { display: flex; }
+      nav ul li { margin: 10px 0; padding: 0 20px; }
+      main { margin: 120px 15px 20px; padding: 20px; }
     }
   </style>
 </head>
-
 <body>
-
   <header>
-    <div class="logo">
-      <h1>OMAH Laundry</h1>
-    </div>
+    <div class="logo">OMAH Laundry</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav>
-      <ul id="menu">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="alamat.html">Alamat</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-        <li><a href="statuspesanan.html">Status</a></li>
-        <li><a href="riwayat.html">Riwayat</a></li>
-      </ul>
-    </nav>
+    <nav><ul id="menu">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="alamat.html">Alamat</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="statuspesanan.html">Status</a></li>
+      <li><a href="riwayat.html">Riwayat</a></li>
+    </ul></nav>
   </header>
 
   <main>
@@ -238,35 +75,37 @@
         <option value="Cuci Express">Cuci Express</option>
       </select>
 
+      <label for="berat">Berat (kg):</label>
+      <input type="number" id="berat" min="1" value="1" />
+
       <button class="btn-pesan" onclick="showTagihan()">Lanjutkan ke Tagihan</button>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 OMAH Laundry Jatuh Cahya. All rights reserved.</p>
+    <p>&copy; 2025 OMAH Laundry</p>
   </footer>
 
   <script>
     function showTagihan() {
       const nama = document.getElementById('nama').value;
       const alamat = document.getElementById('alamat').value;
-      const layanan = document.getElementById('opsi').value;
-
-      if (nama && alamat && layanan) {
-        localStorage.setItem('nama', nama);
-        localStorage.setItem('alamat', alamat);
-        localStorage.setItem('layanan', layanan);
-        window.location.href = 'tagihan.html';
-      } else {
-        alert('Mohon lengkapi data terlebih dahulu!');
+      const opsi = document.getElementById('opsi').value;
+      const berat = document.getElementById('berat').value;
+      if (!nama || !alamat || !opsi || !berat) {
+        return alert('Lengkapi semua kolom!');
       }
+      localStorage.setItem('nama', nama);
+      localStorage.setItem('alamat', alamat);
+      localStorage.setItem('opsi', opsi);
+      localStorage.setItem('berat', berat);
+      const biaya = berat * 20000;
+      localStorage.setItem('biaya', biaya);
+      window.location.href = 'tagihan.html';
     }
-
     function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('show');
+      document.getElementById('menu').classList.toggle('show');
     }
   </script>
-
 </body>
 </html>
