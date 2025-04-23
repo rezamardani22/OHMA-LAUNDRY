@@ -92,32 +92,6 @@
       color: #fff;
     }
 
-    .metode-pembayaran label {
-      display: block;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    input[type="radio"] {
-      margin-right: 10px;
-      accent-color: #ffd700;
-    }
-
-    #qrisOptions, #bankOptions {
-      margin-top: 10px;
-      display: none;
-    }
-
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      background-color: #000;
-      color: #ffd700;
-      border: 1px solid #ffd700;
-      font-size: 16px;
-    }
-
     .btn-pesan {
       background-color: #ffd700;
       color: #000;
@@ -207,40 +181,7 @@
     <p><strong>Total Biaya:</strong> Rp <span id="biaya"></span></p>
   </div>
 
-  <h3>Metode Pembayaran</h3>
-  <div class="metode-pembayaran">
-    <label><input type="radio" name="metode" value="DANA"> DANA</label>
-    <label><input type="radio" name="metode" value="ShopeePay"> ShopeePay</label>
-    <label><input type="radio" name="metode" value="GoPay"> GoPay</label>
-    <label><input type="radio" name="metode" value="OVO"> OVO</label>
-    <label><input type="radio" name="metode" value="QRIS" onclick="toggleQris()"> QRIS</label>
-    <label><input type="radio" name="metode" value="BANK" onclick="toggleBank()"> Transfer Bank</label>
-  </div>
-
-  <div id="qrisOptions">
-    <label>Pilih QRIS:
-      <select id="qris-select">
-        <option value="QRIS_DANA">QRIS DANA</option>
-        <option value="QRIS_ShopeePay">QRIS ShopeePay</option>
-        <option value="QRIS_GoPay">QRIS GoPay</option>
-        <option value="QRIS_OVO">QRIS OVO</option>
-      </select>
-    </label>
-  </div>
-
-  <div id="bankOptions">
-    <label>Pilih Bank:
-      <select id="bank-select">
-        <option value="Mandiri">Mandiri</option>
-        <option value="BNI">BNI</option>
-        <option value="BCA">BCA</option>
-        <option value="BRI">BRI</option>
-        <option value="CIMB Niaga">CIMB Niaga</option>
-      </select>
-    </label>
-  </div>
-
-  <button class="btn-pesan" onclick="konfirmasiPembayaran()">Konfirmasi Pembayaran</button>
+  <button class="btn-pesan" onclick="lanjutPembayaran()">Bayar Sekarang</button>
 </main>
 
 <footer>
@@ -252,55 +193,12 @@ function toggleMenu() {
   document.getElementById('menu').classList.toggle('show');
 }
 
-function toggleBank() {
-  document.getElementById('bankOptions').style.display = 'block';
-  document.getElementById('qrisOptions').style.display = 'none';
-}
-
-function toggleQris() {
-  document.getElementById('qrisOptions').style.display = 'block';
-  document.getElementById('bankOptions').style.display = 'none';
-}
-
 ['nama', 'alamat', 'opsi', 'berat', 'biaya'].forEach(id => {
   document.getElementById(id).textContent = localStorage.getItem(id);
 });
 
-function konfirmasiPembayaran() {
-  const metode = document.querySelector('input[name="metode"]:checked');
-  if (!metode) {
-    alert("Pilih metode pembayaran!");
-    return;
-  }
-
-  let metodePembayaran = metode.value;
-
-  if (metode.value === "QRIS") {
-    metodePembayaran += " - " + document.getElementById("qris-select").value;
-    localStorage.setItem("metodePembayaran", metodePembayaran);
-    window.location.href = "https://link-ke-QRIS.com"; // Ganti link QRIS kamu
-    return;
-  }
-
-  if (metode.value === "BANK") {
-    metodePembayaran += " - " + document.getElementById("bank-select").value;
-    localStorage.setItem("metodePembayaran", metodePembayaran);
-    window.location.href = "buktipembayaran.html";
-    return;
-  }
-
-  localStorage.setItem("metodePembayaran", metodePembayaran);
-
-  switch(metode.value) {
-    case "DANA":
-      window.location.href = "https://link.dana.id/your-dana-link"; break;
-    case "ShopeePay":
-      window.location.href = "https://shopeepay.shopee.co.id/your-link"; break;
-    case "GoPay":
-      window.location.href = "https://gopay.co.id/your-link"; break;
-    case "OVO":
-      window.location.href = "https://ovo.id/pay"; break;
-  }
+function lanjutPembayaran() {
+  window.location.href = "https://link-ke-opsi-pembayaran.com"; // Ganti dengan link opsi pembayaran
 }
 </script>
 
