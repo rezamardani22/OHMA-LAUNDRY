@@ -33,20 +33,20 @@
     <h1>OMAH Laundry</h1>
   </header>
   <nav>
-    <a href="index.html">Beranda</a>
-    <a href="alamat.html">Alamat</a>
-    <a href="kontak.html">Kontak</a>
-    <a href="statuspesanan.html">Status</a>
-    <a href="riwayat.html">Riwayat</a>
+    <a href="./index.html">Beranda</a>
+    <a href="./alamat.html">Alamat</a>
+    <a href="./kontak.html">Kontak</a>
+    <a href="./statuspesanan.html">Status</a>
+    <a href="./riwayat.html">Riwayat</a>
   </nav>
   <main>
     <h2>Detail Tagihan</h2>
     <div class="tagihan-info">
-      <p><strong>Nama:</strong> <span id="nama"></span></p>
-      <p><strong>Alamat:</strong> <span id="alamat"></span></p>
-      <p><strong>Opsi Jasa:</strong> <span id="opsi"></span></p>
-      <p><strong>Berat Cucian:</strong> <span id="berat"></span> kg</p>
-      <p><strong>Total Biaya:</strong> Rp <span id="biaya"></span></p>
+      <p><strong>Nama:</strong> <span id="nama">-</span></p>
+      <p><strong>Alamat:</strong> <span id="alamat">-</span></p>
+      <p><strong>Opsi Jasa:</strong> <span id="opsi">-</span></p>
+      <p><strong>Berat Cucian:</strong> <span id="berat">-</span> kg</p>
+      <p><strong>Total Biaya:</strong> Rp <span id="biaya">-</span></p>
     </div>
     <h3>Pilih Metode Pembayaran</h3>
     <div class="metode">
@@ -60,18 +60,27 @@
     <button class="btn" onclick="konfirmasi()">Bayar Sekarang</button>
   </main>
   <footer>&copy; 2025 OMAH Laundry</footer>
+  
   <script>
-    ['nama','alamat','opsi','berat','biaya'].forEach(id => {
-      const el = document.getElementById(id);
-      if(el) el.textContent = localStorage.getItem(id) || '-';
+    document.addEventListener('DOMContentLoaded', () => {
+      const fields = ['nama', 'alamat', 'opsi', 'berat', 'biaya'];
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && localStorage.getItem(id)) {
+          el.textContent = localStorage.getItem(id);
+        }
+      });
     });
 
     function konfirmasi() {
       const metode = document.querySelector('input[name="metode"]:checked');
-      if (!metode) return alert('Pilih metode pembayaran');
+      if (!metode) {
+        alert('Pilih metode pembayaran');
+        return;
+      }
       localStorage.setItem('metodePembayaran', metode.value);
       localStorage.setItem('waktuPembayaran', new Date().toLocaleString());
-      window.location.href = 'buktipembayaran.html';
+      window.location.href = './buktipembayaran.html';
     }
   </script>
 </body>
