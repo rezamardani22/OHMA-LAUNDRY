@@ -184,40 +184,35 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-        color: #f0c674;
-      }
+  ul {
+    flex-direction: column;
+    width: 100%;
+  }
 
-      ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #000;
-        margin-top: 10px;
-        border-radius: 8px;
-        overflow: hidden;
-      }
+  ul li {
+    margin: 10px 0;
+  }
 
-      ul.show {
-        display: flex;
-      }
+  .keunggulan {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* kasih jarak antar kotak */
+  }
 
-      ul li {
-        width: 100%;
-        text-align: center;
-        margin: 0;
-        padding: 10px 0;
-      }
+  .keunggulan div {
+    width: 90%; /* lebih besar dikit supaya kotak lebar di HP */
+    max-width: 400px; /* batasi supaya kotak tidak terlalu besar */
+    text-align: center; /* teks di dalam kotak rata tengah */
+  }
+}
 
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
   </style>
 </head>
 
