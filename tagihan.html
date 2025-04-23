@@ -70,17 +70,18 @@
       margin-right: auto;
       padding: 30px;
       animation: fadeIn 1s ease forwards;
-      text-align: center;
+      text-align: left;
     }
 
     h2, h3 {
       color: #ffd700;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .tagihan-info {
-      text-align: left;
       margin-bottom: 20px;
+      animation: slideIn 0.8s ease forwards;
     }
 
     .tagihan-info p {
@@ -103,12 +104,13 @@
       cursor: pointer;
       margin-top: 20px;
       width: 100%;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: background-color 0.3s, transform 0.3s;
+      display: block;
     }
 
     .btn-pesan:hover {
       background-color: #e6c200;
-      transform: scale(1.05);
+      transform: translateY(-3px);
     }
 
     footer {
@@ -149,11 +151,26 @@
       .menu-toggle {
         display: block;
       }
+
+      main {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .btn-pesan {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
     }
 
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      from {transform: translateX(-50px); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
     }
   </style>
 </head>
@@ -198,7 +215,7 @@ function toggleMenu() {
 });
 
 function lanjutPembayaran() {
-  window.location.href = "https://link-ke-opsi-pembayaran.com"; // Ganti dengan link opsi pembayaran
+  window.location.href = "https://link-ke-opsi-pembayaran.com";
 }
 </script>
 
