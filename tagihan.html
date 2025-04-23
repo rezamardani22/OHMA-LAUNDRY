@@ -256,10 +256,7 @@
     document.getElementById("berat").textContent = localStorage.getItem("berat");
     document.getElementById("biaya").textContent = localStorage.getItem("biaya");
 
-    function toggleBank() {
-      document.getElementById("bankOptions").style.display = "block";
-    }
- function konfirmasiPembayaran() {
+   function konfirmasiPembayaran() {
   const metode = document.querySelector('input[name="metode"]:checked');
   if (!metode) {
     alert("Pilih metode pembayaran!");
@@ -285,8 +282,7 @@
     window.location.href = "buktipembayaran.html"; // untuk Transfer Bank
   }
 }
-  
-    
+
   </script>
 </body>
 </html>
