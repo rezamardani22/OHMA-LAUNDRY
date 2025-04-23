@@ -259,28 +259,34 @@
     function toggleBank() {
       document.getElementById("bankOptions").style.display = "block";
     }
+ function konfirmasiPembayaran() {
+  const metode = document.querySelector('input[name="metode"]:checked');
+  if (!metode) {
+    alert("Pilih metode pembayaran!");
+    return;
+  }
 
-    function konfirmasiPembayaran() {
-      const metode = document.querySelector('input[name="metode"]:checked');
-      if (!metode) {
-        alert("Pilih metode pembayaran!");
-        return;
-      }
+  let metodePembayaran = metode.value;
+  if (metode.value === "BANK") {
+    metodePembayaran += " - " + document.getElementById("bank-select").value;
+  }
 
-      let metodePembayaran = metode.value;
-      if (metode.value === "BANK") {
-        metodePembayaran += " - " + document.getElementById("bank-select").value;
-      }
+  localStorage.setItem("metodePembayaran", metodePembayaran);
+  localStorage.setItem("waktuPembayaran", new Date().toLocaleString());
 
-      localStorage.setItem("metodePembayaran", metodePembayaran);
-      localStorage.setItem("waktuPembayaran", new Date().toLocaleString());
-      window.location.href = "buktipembayaran.html";
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('show');
-    }
+  // Redirect berdasarkan metode
+  if (metode.value === "QRIS") {
+    window.location.href = "https://link-QRIS-kamu.com"; // ganti ke link QRIS kamu
+  } else if (metode.value === "OVO") {
+    window.location.href = "https://ovo.id/pay"; // ganti ke link pembayaran OVO kamu
+  } else if (metode.value === "DANA") {
+    window.location.href = "https://link.dana.id/your-custom-link"; // ganti ke link DANA kamu
+  } else {
+    window.location.href = "buktipembayaran.html"; // untuk Transfer Bank
+  }
+}
+  
+    
   </script>
 </body>
 </html>
