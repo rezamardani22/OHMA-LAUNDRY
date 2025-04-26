@@ -244,7 +244,13 @@
   <footer><p>&copy; 2025 OMAH Laundry</p></footer>
 
   <script>
-    // Ambil data dari localStorage
+
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('show');
+}
+
+// Ambil data dari localStorage
 const nama = localStorage.getItem('nama') || 'Nama Tidak Ditemukan';
 const alamat = localStorage.getItem('alamat') || 'Alamat Tidak Ditemukan';
 const waktu = localStorage.getItem('waktuPembayaran') || 'Waktu Tidak Ditemukan';
@@ -283,6 +289,8 @@ statusPesanan.forEach((status, index) => {
 
   statusTahapan.appendChild(li);
 });
+
+
 
   </script>
 </body>
